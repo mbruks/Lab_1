@@ -64,3 +64,6 @@ parent(evgeniy,jacob).
 
 mans(X):-man(X),write(X),write(","),fail.
 womans(X):-woman(X),write(X),write(","),fail.
+
+children(X,Y):-parent(Y,X),!.
+allChildren(Y):-parent(Y,X),write(X),nl,fail.
