@@ -62,3 +62,5 @@ parent(ksenia,jacob).
 parent(evgeniy,jessica).
 parent(evgeniy,jacob).
 
+mans(X):-man(X),write(X),write(","),fail.
+womans(X):-woman(X),write(X),write(","),fail.
