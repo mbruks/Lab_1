@@ -67,3 +67,6 @@ womans(X):-woman(X),write(X),write(","),fail.
 
 children(X,Y):-parent(Y,X),!.
 allChildren(Y):-parent(Y,X),write(X),nl,fail.
+
+mother(X,Y):-parent(X,Y),woman(X),!.
+mother(X):-mother(Y,X),write(Y),!.
