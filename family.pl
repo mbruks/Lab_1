@@ -87,3 +87,6 @@ b_s(X):-parent(Z,X),parent(Z,Y),woman(Z),not(X=Y),write(Y),nl,fail.
 
 grand_pa(X,Y):- parent(X,Z),parent(Z,Y),man(X),!.
 grand_pas(X):-parent(Y,Z),parent(Z,X),man(Y),write(Y),nl,fail.
+
+grand_ma(X,Y):- parent(X,Z),parent(Z,Y),woman(X),!.
+grand_mas(X):-parent(Y,Z),parent(Z,X),woman(Y),write(Y),nl,fail.
