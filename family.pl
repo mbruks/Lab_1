@@ -81,3 +81,6 @@ brothers(X):-all_brothers(Y,X),write(Y),nl,fail.
 sister(X,Y):-parent(Z,X),parent(Z,Y),woman(X),woman(Z),not(X=Y),!.
 all_sisters(X,Y):-parent(Z,X),parent(Z,Y),woman(Z),woman(X),not(X=Y).
 sisters(X):-all_sisters(Y,X),write(Y),nl,fail.
+
+b_s(X,Y):-parent(Z,X),parent(Z,Y),woman(Z),not(X=Y),!.
+b_s(X):-parent(Z,X),parent(Z,Y),woman(Z),not(X=Y),write(Y),nl,fail.
