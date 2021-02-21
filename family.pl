@@ -73,3 +73,7 @@ mother(X):-mother(Y,X),write(Y),!.
 
 son(X,Y):-parent(Y,X),man(X),!.
 son(X):-son(Y,X),write(Y),!.
+
+brother(X,Y):-parent(Z,X),parent(Z,Y),man(X),man(Z),not(X=Y),!.
+all_brothers(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y).
+brothers(X):-all_brothers(Y,X),write(Y),nl,fail.
