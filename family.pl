@@ -97,3 +97,6 @@ grand_pa_and_da(X,Y):-(grand_pa(X,Y),woman(Y),!);grand_pa(Y,X),woman(X),!.
 
 uncle(X,Y):-parent(Z,Y),brother(X,Z),!.
 uncles(X):-parent(Z,X),all_brothers(Y,Z),write(Y),nl,fail.
+
+aunt(X,Y):-parent(Z,Y),sister(X,Z),!.
+aunts(X):-parent(Z,X),all_sisters(Y,Z),write(Y),nl,fail.
