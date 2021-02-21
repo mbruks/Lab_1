@@ -84,3 +84,6 @@ sisters(X):-all_sisters(Y,X),write(Y),nl,fail.
 
 b_s(X,Y):-parent(Z,X),parent(Z,Y),woman(Z),not(X=Y),!.
 b_s(X):-parent(Z,X),parent(Z,Y),woman(Z),not(X=Y),write(Y),nl,fail.
+
+grand_pa(X,Y):- parent(X,Z),parent(Z,Y),man(X),!.
+grand_pas(X):-parent(Y,Z),parent(Z,X),man(Y),write(Y),nl,fail.
