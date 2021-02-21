@@ -77,3 +77,7 @@ son(X):-son(Y,X),write(Y),!.
 brother(X,Y):-parent(Z,X),parent(Z,Y),man(X),man(Z),not(X=Y),!.
 all_brothers(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y).
 brothers(X):-all_brothers(Y,X),write(Y),nl,fail.
+
+sister(X,Y):-parent(Z,X),parent(Z,Y),woman(X),woman(Z),not(X=Y),!.
+all_sisters(X,Y):-parent(Z,X),parent(Z,Y),woman(Z),woman(X),not(X=Y).
+sisters(X):-all_sisters(Y,X),write(Y),nl,fail.
