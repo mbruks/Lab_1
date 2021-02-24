@@ -26,7 +26,7 @@ human(bilbo_baggins,0).
 human(hermione_granger,1).
 human(dragon_smaug,0).
 human(hercules,1).
-human(dunno,0).
+human(dunno,1).
 human(brave_lion,0).
 human(baba_yaga,0).
 human(the_wizard_of_oz,1).
