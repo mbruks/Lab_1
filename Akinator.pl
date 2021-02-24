@@ -115,7 +115,7 @@ hero(hercules,1).
 hero(dunno,0).
 hero(brave_lion,1).
 hero(baba_yaga,0).
-hero(the_wizard_of_oz,0).
+hero(the_wizard_of_oz,1).
 hero(ding_ding,0).
 hero(king_arthur,1).
 hero(scarlett_OHara,0).
