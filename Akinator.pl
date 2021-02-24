@@ -900,3 +900,118 @@ negative(ron_weasley,0).
 negative(sinbad_the_mariner,0).
 negative(captain_hook,1).
 
+
+question1(X1):-	write("Is your character human?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X1).
+
+question2(X2):-	write("Is your character female?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X2).
+
+question3(X3):-	write("Was your character a hero to the people?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X3).
+
+question4(X4):-	write("Did your character have children?"),nl,
+				write("1. Yes"),nl,
+                                write("0. No"),nl,
+				read(X4).
+
+question5(X5):-	write("Is your character connected to the magical world?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X5).
+
+question6(X6):- write("Has your character ever gone on a long voyage?"),nl,
+                                write("1. Yes"),nl,
+				write("0. NO"),nl,
+				read(X6).
+
+question7(X7):-	write("Whether your character is rich?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X7).
+
+question8(X8):-	write("Did your character solve crimes?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X8).
+
+question9(X9):-	write("Did your character have a partner?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X9).
+
+question10(X10):- write("Did your character have a magic wand?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X10).
+
+question11(X11):- write("Did your character wear a mask?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X11).
+
+question12(X12):- write("Was your character looking for treasure?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X12).
+
+question13(X13):- write("Did your character have a tragic fate?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X13).
+
+question14(X14):- write("Do they tell you about your character in legends?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X14).
+
+question15(X15):- write("Can your character fly?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X15).
+
+question16(X16):- write("Was your character a knight?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X16).
+
+question17(X17):- write("Your character was the hero of the battles?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X17).
+
+question18(X18):- write("Did your character's story end in death?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X18).
+
+question19(X19):- write("Is your character connected to the time of Bonaparte's reign?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X19).
+
+question20(X20):- write("Did your character have a mustache?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X20).
+question21(X21):- write("Is your character negative?"),nl,
+				write("1. Yes"),nl,
+				write("0. No"),nl,
+				read(X21).
+
+start:-    question1(X1),question2(X2),question3(X3),question4(X4),question5(X5),
+        question6(X6),question7(X7),question8(X8),question9(X9),question10(X10),
+        question11(X11),question12(X12),question13(X13),question14(X14),
+        question15(X15),question16(X16),question17(X17),question18(X18),
+        question19(X19),question20(X20),question21(X21),
+		human(X,X1),female(X,X2),hero(X,X3),children(X,X4),magical(X,X5),
+                voyage(X,X6),rich(X,X7),crimes(X,X8),partner(X,X9),wand(X,X10),
+                mask(X,X11),treasure(X,X12),tragic(X,X13),legends(X,X14),
+                fly(X,X15),knight(X,X16),battles(X,X17),story(X,X18),
+                bonaparte(X,X19),mustache(X,X20),negative(X,X21),write(X).
