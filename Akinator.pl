@@ -72,7 +72,7 @@ female(hercules,0).
 female(dunno,0).
 female(brave_lion,0).
 female(baba_yaga,1).
-female(the_wizard_of_oz,1).
+female(the_wizard_of_oz,0).
 female(ding_ding,1).
 female(king_arthur,0).
 female(scarlett_OHara,1).
