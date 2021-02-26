@@ -41,3 +41,6 @@ max_down(CurX,Max,X):-CurX1 is CurX mod 10,CurY is CurX div 10, CurY1 is CurY mo
 
 sum_up_del3(0,0):-!.
 sum_up_del3(N,X):-N1 is N div 10,sum_up(N1,X1),del3(N,Y),X is X1 + Y.
+
+del3(X,Y):- X mod 10 mod 3 =:= 0 , Y is X mod 10,!.
+del3(_,Y):-Y is 0,!.
