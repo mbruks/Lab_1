@@ -44,3 +44,7 @@ sum_up_del3(N,X):-N1 is N div 10,sum_up(N1,X1),del3(N,Y),X is X1 + Y.
 
 del3(X,Y):- X mod 10 mod 3 =:= 0 , Y is X mod 10,!.
 del3(_,Y):-Y is 0,!.
+
+sum_down_del3(N,X):-sum_down_del3(N,0,X).
+sum_down_del3(0,X,X):-!.
+sum_down_del3(A,Sum,X):- A1 is A div 10,del3(A,Y), Sum1 is Sum+Y, sum_down_del3(A1,Sum1,X).
