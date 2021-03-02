@@ -48,3 +48,23 @@ del3(_,Y):-Y is 0,!.
 sum_down_del3(N,X):-sum_down_del3(N,0,X).
 sum_down_del3(0,X,X):-!.
 sum_down_del3(A,Sum,X):- A1 is A div 10,del3(A,Y), Sum1 is Sum+Y, sum_down_del3(A1,Sum1,X).
+
+% Найти НОД двух чисел.
+nod(A,A,A):-A=\=0,!. % остановка, A !=0
+nod(0,B,B):-!.
+nod(A,0,A):-!.
+nod(A,B,Nod):-A>B,C is A mod B, nod(C,B,Nod),!.
+nod(A,B,Nod):-A<B,C is B mod A, nod(A,C,Nod),!.
+
+%Проверить число на простоту
+prime(N,X):- N mod X =:= 0,!. % делится без остатка, выходим
+prime(N,X):- X*X=<N,X1 is X+1,prime(N,X1).
+
+prime(1):-!.
+prime(N):-not(prime(N,2)).
+
+%Найти количество делителей числа
+kol_del(_,0,0):-!.
+kol_del(N,CurX,X):-N mod CurX =:= 0,CurX1 is CurX-1,kol_del(N,CurX1,X1), X is X1+1;
+N mod CurX=\= 0, CurX1 is CurX-1, kol_del(N,CurX1,X1), X is X1.
+kol_del(N,X):-kol_del(N,N,X),!.
