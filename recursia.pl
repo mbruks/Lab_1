@@ -68,3 +68,17 @@ kol_del(_,0,0):-!.
 kol_del(N,CurX,X):-N mod CurX =:= 0,CurX1 is CurX-1,kol_del(N,CurX1,X1), X is X1+1;
 N mod CurX=\= 0, CurX1 is CurX-1, kol_del(N,CurX1,X1), X is X1.
 kol_del(N,X):-kol_del(N,N,X),!.
+
+% Найти количество чисел, взаимно простых с заданным
+kol_mutually_prime_up(_,0,0):-!.
+kol_mutually_prime_up(N,CurX,X):-nod(N,CurX,Nod),Nod =:= 1,CurX1 is CurX-1,kol_mutually_prime_up(N,CurX1,X1),X is X1+1;
+nod(N,CurX,Nod),Nod =\= 1, CurX1 is CurX-1,kol_mutually_prime_up(N,CurX1,X1), X is X1.
+kol_mutually_prime_up(N,X):-kol_mutually_prime_up(N,N,X).
+
+mutually_prime(X,Y,Z):-nod(X,Y,Nod),Nod =:= 1, Z is 1,!.
+mutually_prime(_,_,Z):- Z is 0,!.
+
+kol_mutually_prime_down(N,N,X,X):-!.
+kol_mutually_prime_down(N,CurX,Kol,X):- mutually_prime(N,CurX,Nod),CurX1 is CurX+1, Kol1 is Kol+Nod,kol_mutually_prime_down(N,CurX1,Kol1,X).
+
+kol_mutually_prime_down(N,X):-kol_mutually_prime_down(N,1,0,X).
