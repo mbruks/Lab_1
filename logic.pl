@@ -123,3 +123,25 @@ pr_ein1:-Event=[_,_,_,_],
     write("wedding "),write(S1),write(" "),write(S2),write(" "),write(S3),nl,
     write("rest "),write(T1),write(" "),write(T2),write(" "),write(T3),nl,
     write("conference "),write(Frth1),write(" "),write(Frth2),write(" "),write(Frth3).
+
+
+%Задание 2. Беседует трое друзей: Белокуров, Рыжов, Чернов. Брюнет
+%сказал Белокурову: “Любопытно, что один из нас блондин, другой брюнет,
+% третий - рыжий, но ни у кого цвет волос не соответствует фамилии”.
+% Какой цвет волос у каждого из друзей?
+
+pr_friends:-
+    Friend=[_,_,_],
+    in_list(Friend,[belokurov,_]),
+    in_list(Friend,[ryzhov,_]),
+    in_list(Friend,[chernov,_]),
+    in_list(Friend,[_,redhead]),
+    in_list(Friend,[_,blonde]),
+    in_list(Friend,[_,dark-haired]),
+
+    not(in_list(Friend,[belokurov, blonde])),
+    not(in_list(Friend,[belokurov,dark-haired])),
+    (in_list(Friend,[ryzhov, dark-haired]);in_list(Friend,[ryzhov,blondin])),
+    (in_list(Friend,[chernov,blonde]);in_list(Friend,[chernov, redhead])),
+
+    write(Friend),!.
