@@ -19,7 +19,7 @@ sleva_next(_,_,[_]):-fail.
 sleva_next(A,B,[B|[A|_]]).
 sleva_next(A,B,[_|List]):-sleva_next(A,B,List).
 
-%Живет рядом
+%Р–РёРІРµС‚ СЂСЏРґРѕРј
 next_to(A,B,List):-sprava_next(A,B,List).
 next_to(A,B,List):-sleva_next(A,B,List).
 
@@ -28,8 +28,8 @@ el_no([H|_],Num,Num,H):-!.
 el_no([_|Tail],Num,Ind,El):-Ind1 is Ind+1,el_no(Tail,Num,Ind1,El).
 
 
-% Формируем список из 5 элементов,
-% цвет,национальность,напиток,животное,сигареты
+% Р¤РѕСЂРјРёСЂСѓРµРј СЃРїРёСЃРѕРє РёР· 5 СЌР»РµРјРµРЅС‚РѕРІ,
+% С†РІРµС‚,РЅР°С†РёРѕРЅР°Р»СЊРЅРѕСЃС‚СЊ,РЅР°РїРёС‚РѕРє,Р¶РёРІРѕС‚РЅРѕРµ,СЃРёРіР°СЂРµС‚С‹
 pr_ein:- Houses=[_,_,_,_,_],
 
 		in_list(Houses,[red,english,_,_,_]),
