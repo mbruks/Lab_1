@@ -144,7 +144,7 @@ pr_friends:-
     (in_list(Friend,[ryzhov, dark-haired]);in_list(Friend,[ryzhov,blondin])),
     (in_list(Friend,[chernov,blonde]);in_list(Friend,[chernov, redhead])),
 
-    write(Friend),!.
+    write(Friend).
 
 %Задание 3. Три подруги вышли в белом, зеленом и синем платьях и
 %туфлях. Известно, что только у Ани цвета платья и туфлей совпадали. Ни
@@ -170,4 +170,32 @@ pr_girl:-
      not(in_list(Friend,[valya,white,_])),
      not(in_list(Friend,[valya,_,white])), 
      not(in_list(Friend,[natasha,green,_])), 
-     write(Friend),!.
+     write(Friend).
+     
+% Задание 4. На заводе работали три друга: слесарь, токарь и сварщик. Их
+% фамилии Борисов, Иванов и Семенов. У слесаря нет ни братьев, ни сестер.
+% Он самый младший из друзей. Семенов, женатый на сестре Борисова, старше
+% токаря. Назвать фамилии слесаря, токаря и сварщика.
+pr_workers:-
+    Workers=[_,_,_],
+    in_list(Workers,[borisov,_,_,_,_,_]),
+    in_list(Workers,[ivanov,_,_,_,_,_]),
+    in_list(Workers,[semenov,_,_,_,_,_]),
+
+    in_list(Workers,[_,locksmith,_,_,_,_]), %слесарь
+    in_list(Workers,[_,turner,_,_,_,_]), %токарь
+    in_list(Workers,[_,welder,_,_,_,_]), %сварщик
+
+    in_list(Workers,[_,_,brother,_,_,_]),
+    in_list(Workers,[_,_,_,_,_,sister]),
+    in_list(Workers,[_,_,_,old,_,_]),
+    in_list(Workers,[_,_,_,young,_,_]),
+    in_list(Workers,[_,_,_,_,married,_]),
+
+    in_list(Workers,[borisov,_,_,_,_,sister]),
+    in_list(Workers,[semenov,_,_,old,married,_]),
+
+     not(in_list(Workers,[_,locksmith,brother,old,_,sister])),
+     not(in_list(Workers,[semenov,turner,_,_,_,_])),
+     not(in_list(Workers,[borisov,locksmith,_,_,_,_])),
+     write(Workers).
