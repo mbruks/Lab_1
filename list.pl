@@ -43,3 +43,9 @@ member([H|T],X):-(X=H -> !;elem_in_list(T,X)).
 reverse(L,X):-rev(L,[],X).
 rev([],X,X):-!.
 rev([H|T],CurL,X):-rev(T,[H|CurL],X).
+
+sublist([],_):-!.
+sublist([H|TailSub],[H|TailList]):-sublist(TailSub,TailList).
+
+p(SubList,List):-sublist(SubList,List),!.
+p(SubList,[_|T]):-p(SubList,T).
