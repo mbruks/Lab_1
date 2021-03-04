@@ -62,3 +62,5 @@ counter([],_,Kolvo,Kolvo):-!.
 counter([H|T],Elem,Num,Kolvo):-(H =:= Elem -> Num1 is Num+1;Num1 is Num), counter(T,Elem,Num1,Kolvo).
 counter(List,Elem,Kolvo):-counter(List,Elem,0,Kolvo).
 
+lenght([],L,L):-!.
+
