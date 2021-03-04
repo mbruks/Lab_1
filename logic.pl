@@ -225,10 +225,11 @@ pr_vessel:-
     not(in_list(Vessel,[banka,limonad])),
     not(in_list(Vessel,[banka,water])),
 
-    next_to([_,limonad],[kuvshin,_],Vessel), %сосуд с лимонадом находится между кувшином
-    next_to([_,limonad],[_,kvas],Vessel),    % и сосудом с квасом
+     sleva_next([_,limonad],[kuvshin,_],Vessel), %сосуд с лимонадом находится между кувшином
+   sprava_next([_,limonad],[_,kvas],Vessel),    % и сосудом с квасом
 
     next_to([stakan,_],[banka,_],Vessel),  %Стакан находится около банки
     next_to([stakan,_],[_,milk],Vessel),  % и сосуда с молоком
 
     write(Vessel).
+
