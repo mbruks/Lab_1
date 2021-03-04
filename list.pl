@@ -49,3 +49,6 @@ sublist([H|TailSub],[H|TailList]):-sublist(TailSub,TailList).
 
 p(SubList,List):-sublist(SubList,List),!.
 p(SubList,[_|T]):-p(SubList,T).
+
+repeat([]).
+repeat([H|T]):-elem_in_list(T,H) -> fail,!;repeat(T).
