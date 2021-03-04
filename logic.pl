@@ -297,3 +297,37 @@ pr_athletes:-
     in_list(Sport,[richard,_,THAN,_]),write("Ричард увлекается - "), write(THAN),nl,
 
     write(Sport).
+    
+    % Задание 8.Пятеро детей Алик, Боря, Витя, Лена и Даша приехали в лагерь
+% из 5 разных городов: Харькова, Умани, Полтавы, Славянска и Краматорска.
+% Есть 4 высказывания:
+% 1) Если Алик не из Умани, то Боря из Краматорска.
+% 2) Или Боря, или Витя приехали из Харькова.
+% 3) Если Витя не из Славянска, то Лена приехала из Харькова.
+% 4) Или Даша приехала из Умани, или Лена из Краматорска. Кто откуда
+% приехал?
+
+pr_town:-
+    Town=[_,_,_,_,_],
+    in_list(Town,[alik,_]),
+    in_list(Town,[borya,_]),
+    in_list(Town,[vitya,_]),
+    in_list(Town,[lena,_]),
+    in_list(Town,[dasha,_]),
+
+    in_list(Town,[_,kharkiv]),
+    in_list(Town,[_,ymani]),
+    in_list(Town,[_,poltava]),
+    in_list(Town,[_,slavyansk]),
+    in_list(Town,[_,kramatorsk]),
+
+    (not(in_list(Town,[alik,ymani])) -> (in_list(Town,[borya,kramatorsk]));
+     in_list(Town,[alik,ymani])),
+    (not(in_list(Town,[vitya,slavyansk])) -> (in_list(Town,[lena,kharkiv]));
+     in_list(Town,[vitya,slavyansk])),
+    (in_list(Town,[borya,kharkiv]);
+     in_list(Town,[vitya,kharkiv])),
+    (in_list(Town,[dasha,ymani]);
+     in_list(Town,[lena,kramatorsk])),
+    
+    write(Town).
