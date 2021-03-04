@@ -233,3 +233,36 @@ pr_vessel:-
 
     write(Vessel).
 
+%Задание 6. Воронов, Павлов, Левицкий и Сахаров – четыре талантливых
+%молодых человека. Один из них танцор, другой художник, третий-певец, а
+%четвертый-писатель. О них известно следующее: Воронов и Левицкий сидели
+%в зале консерватории в тот вечер, когда певец дебютировал в сольном
+% концерте. Павлов и писатель вместе позировали художнику. Писатель
+% написал биографическую повесть о Сахарове и собирается написать о
+% Воронове. Воронов никогда не слышал о Левицком. Кто чем занимается?
+
+pr_talant:-
+    Talant=[_,_,_,_],
+    in_list(Talant,[voronov,_]),
+    in_list(Talant,[pavlov,_]),
+    in_list(Talant,[levitsky,_]),
+    in_list(Talant,[sakharov,_]),
+
+    in_list(Talant,[_,dancer]),
+    in_list(Talant,[_,painter]),
+    in_list(Talant,[_,singer]),
+    in_list(Talant,[_,writer]),
+
+    not(in_list(Talant,[voronov,singer])),
+    not(in_list(Talant,[levitsky,singer])),
+
+    not(in_list(Talant,[pavlov,painter])),
+    not(in_list(Talant,[pavlov,writer])),
+
+    not(in_list(Talant,[sakharov,writer])),
+    not(in_list(Talant,[voronov,writer])),
+
+    not(in_list(Talant,[sakharov,writer])),
+    not(in_list(Talant,[voronov,writer])),
+
+    write(Talant).
