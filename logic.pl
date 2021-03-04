@@ -199,3 +199,36 @@ pr_workers:-
      not(in_list(Workers,[semenov,turner,_,_,_,_])),
      not(in_list(Workers,[borisov,locksmith,_,_,_,_])),
      write(Workers).
+
+%Задание 5. В бутылке, стакане, кувшине и банке находятся молоко,
+%лимонад, квас и вода. Известно, что вода и молоко не в бутылке, сосуд с
+%лимонадом находится между кувшином и сосудом с квасом, в банке - не
+%лимонад и не вода. Стакан находится около банки и сосуда с молоком. Как
+%распределены эти жидкости по сосудам.
+
+
+pr_vessel:-
+    Vessel=[_,_,_,_],
+    in_list(Vessel,[butilka,_]),
+    in_list(Vessel,[stakan,_]),
+    in_list(Vessel,[kuvshin,_]),
+    in_list(Vessel,[banka,_]),
+
+    in_list(Vessel,[_,milk]),
+    in_list(Vessel,[_,limonad]),
+    in_list(Vessel,[_,kvas]),
+    in_list(Vessel,[_,water]),
+
+    not(in_list(Vessel,[butilka,water])),
+    not(in_list(Vessel,[butilka,milk])),
+
+    not(in_list(Vessel,[banka,limonad])),
+    not(in_list(Vessel,[banka,water])),
+
+    next_to([_,limonad],[kuvshin,_],Vessel), %сосуд с лимонадом находится между кувшином
+    next_to([_,limonad],[_,kvas],Vessel),    % и сосудом с квасом
+
+    next_to([stakan,_],[banka,_],Vessel),  %Стакан находится около банки
+    next_to([stakan,_],[_,milk],Vessel),  % и сосуда с молоком
+
+    write(Vessel).
