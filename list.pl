@@ -54,6 +54,11 @@ repeat([]).
 repeat([H|T]):-elem_in_list(T,H) -> fail,!;repeat(T).
 
 
-unique_list1(List,UList):-reverse(List,ListR),unique_list(ListR,[],UList).
+unique_list(List,UList):-reverse(List,ListR),unique_list(ListR,[],UList).
 unique_list([],UList,UList):-!.
 unique_list([H|T],Buffer,UList):-(member(T,H) -> unique_list(T,Buffer,UList); unique_list(T,[H|Buffer],UList)).
+
+counter([],_,Kolvo,Kolvo):-!.
+counter([H|T],Elem,Num,Kolvo):-(H =:= Elem -> Num1 is Num+1;Num1 is Num), counter(T,Elem,Num1,Kolvo).
+counter(List,Elem,Kolvo):-counter(List,Elem,0,Kolvo).
+
