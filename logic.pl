@@ -266,3 +266,34 @@ pr_talant:-
     not(in_list(Talant,[voronov,writer])),
 
     write(Talant).
+
+  % Задание 7. Три друга заняли первое, второе, третье места в
+% соревнованиях универсиады. Друзья разной национальности, зовут их
+% по-разному, и любят они разные виды спорта. Майкл предпочитает
+% баскетбол и играет лучше, чем американец. Израильтянин Саймон играет
+% лучше теннисиста. Игрок в крикет занял первое место. Кто является
+% австралийцем? Каким спортом увлекается Ричард?
+
+pr_athletes:-
+    Sport=[_,_,_],
+    in_list(Sport,[michael,_,basketball,_]),
+    in_list(Sport,[simon,israel,_,_]),
+    in_list(Sport,[richard,_,_,_]),
+    in_list(Sport,[_,australia,_,_]),
+    in_list(Sport,[_,_,cricket,1]),
+    in_list(Sport,[_,america,_,_]),
+    in_list(Sport,[_,_,tennis,_]),
+    in_list(Sport,[_,_,_,2]),
+    in_list(Sport,[_,_,_,3]),
+
+    in_list(Sport,[michael,_,_,Num1]),in_list(Sport,[_,america,_,Num2]),Num1<Num2,
+    in_list(Sport,[simon,_,_,Num3]),in_list(Sport,[_,_,tennis,Num4]),Num3<Num4,
+
+    not(in_list(Sport,[simon,_,tennis,_])),
+    not(in_list(Sport,[michael,america,_,_])),
+
+
+    in_list(Sport,[WHO1,australia,_,_]),write("Австралиец это - "), write(WHO1),nl,
+    in_list(Sport,[richard,_,THAN,_]),write("Ричард увлекается - "), write(THAN),nl,
+
+    write(Sport).
