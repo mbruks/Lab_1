@@ -39,3 +39,7 @@ min_list_down([H|T],Min):- min_list_down(T,H,Min).
 proverka_min:-write("Количество элементов в списке: "),nl,read(N),write("Введите элементы списка"),nl,readList(N,List),min_list_down(List,Min),write("Минимальный элемент списка: "),write(Min),!.
 
 member([H|T],X):-(X=H -> !;elem_in_list(T,X)).
+
+reverse(L,X):-rev(L,[],X).
+rev([],X,X):-!.
+rev([H|T],CurL,X):-rev(T,[H|CurL],X).
