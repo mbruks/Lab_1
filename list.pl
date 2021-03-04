@@ -38,7 +38,7 @@ min_list_down([H|T],Min):- min_list_down(T,H,Min).
 
 proverka_min:-write("Количество элементов в списке: "),nl,read(N),write("Введите элементы списка"),nl,readList(N,List),min_list_down(List,Min),write("Минимальный элемент списка: "),write(Min),!.
 
-member([H|T],X):-(X=H -> !;elem_in_list(T,X)).
+member([H|T],X):-(X=H -> !;member(T,X)).
 
 reverse(L,X):-rev(L,[],X).
 rev([],X,X):-!.
@@ -52,3 +52,8 @@ p(SubList,[_|T]):-p(SubList,T).
 
 repeat([]).
 repeat([H|T]):-elem_in_list(T,H) -> fail,!;repeat(T).
+
+
+unique_list1(List,UList):-reverse(List,ListR),unique_list(ListR,[],UList).
+unique_list([],UList,UList):-!.
+unique_list([H|T],Buffer,UList):-(member(T,H) -> unique_list(T,Buffer,UList); unique_list(T,[H|Buffer],UList)).
