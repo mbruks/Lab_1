@@ -21,5 +21,9 @@ reverse([H|T],Z,Acc):- reverse(T,Z,[H|Acc]).
 
        %1
 wr_str:-read_str(A,Length),write_str(A),write(","),write_str(A),write(","),write_str(A),write(","),write(Length).
+       %2
+kol_w:-read_str(A,_),append1([32],A,A1),kol_words(A1,0,Kol),write(Kol).
+kol_words([_|[]],Kol,Kol):-!.
+kol_words([H1|[H2|T]],K,Kol):-(H1=32,H2\=32 -> K1 is K+1,kol_words([H2|T],K1,Kol);kol_words([H2|T],K,Kol)).
 
 
