@@ -46,3 +46,12 @@ list_entry_el([H|T],El,Num,Chet):-Chet1 is Chet+1,(H = El,Num1 = Chet1 -> write(
 index_3:-read_str(St,_),index_3(St,0).
 index_3([],_):-!.
 index_3([H|T],Counter):-Counter1 is Counter+1,(0 is Counter1 mod 3 -> put(H),index_3(T,Counter1);index_3(T,Counter1)).
+
+       %7
+kol_cpez_sim([_|[]],KZ,KZ):-!.
+kol_cpez_sim([H1|[H2|T3]],KZero,KolZero):-((H1=43;H1=45),H2=48 -> KZero1 is KZero+1,kol_cpez_sim([H2|T3],KZero1,KolZero);kol_cpez_sim([H2|T3],KZero,KolZero)).
+kol_plus_minus:-read_str(St,_),kol_plus_minus(St,0,KP,0,KM),kol_cpez_sim(St,0,KZ),write("Plus = "),write(KP),nl,write("Minus = "),write(KM),nl,write("Zero = "),write(KZ),!.
+kol_plus_minus([],KP,KP,KM,KM):-!.
+kol_plus_minus([43|T],KP,KolP,KM,KolM):-KP1 is KP+1,kol_plus_minus(T,KP1,KolP,KM,KolM).
+kol_plus_minus([45|T],KP,KolP,KM,KolM):-KM1 is KM+1,kol_plus_minus(T,KP,KolP,KM1,KolM).
+kol_plus_minus([_|T],KP,KolP,KM,KolM):-kol_plus_minus(T,KP,KolP,KM,KolM).
