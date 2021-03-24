@@ -76,3 +76,9 @@ number_10:-read_str(St,_),number_10(St,St1),write_str(St1).
 
 number_10([H1,H2,H3|T],List1):-H1=97,H2=98,H3=99,List1 = [119,119,119|T],!.
 number_10(List,List1):-append1(List,[122,122,122],List1),!.
+      
+      %11
+number_11:-read_str(Str,Length),(Length>10 -> number_11(Str,N); number_11(Str,Length,12,N)),write_str(N).
+number_11(Str,N):-N=[_,_,_,_,_,_],append1(N,_,Str),!.
+number_11(N,12,_,N):-!.
+number_11(Str,L,Length,N):-L1 is L+1,append1(Str,[111],Str1),number_11(Str1,L1,Length,N).
