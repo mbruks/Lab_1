@@ -89,3 +89,9 @@ number_13([],_,St,St):-!.
 number_13([H|T],Counter,NSt,NStr):-Counter1 is Counter+1,0 is Counter1 mod 2,(H\=97,H\=98 -> append1([97],NSt,NSt1),number_13(T,Counter1,NSt1,NStr),!;
                                                                              append1([99],NSt,NSt1),number_13(T,Counter1,NSt1,NStr)),!.
 number_13([H|T],Counter,NSt,NStr):-Counter1 is Counter+1,append1([H],NSt,NSt1),number_13(T,Counter1,NSt1,NStr).
+
+      %14
+number_14:-read_str(St,_),number_14(St,0,Kol),write(Kol).
+number_14([],K,K):-!.
+number_14([H|T],K,Kol):-H>47,H<58,K1 is K+1,number_14(T,K1,Kol),!.
+number_14([_|T],K,Kol):-number_14(T,K,Kol),!.
