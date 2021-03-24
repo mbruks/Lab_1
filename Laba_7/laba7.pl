@@ -82,3 +82,10 @@ number_11:-read_str(Str,Length),(Length>10 -> number_11(Str,N); number_11(Str,Le
 number_11(Str,N):-N=[_,_,_,_,_,_],append1(N,_,Str),!.
 number_11(N,12,_,N):-!.
 number_11(Str,L,Length,N):-L1 is L+1,append1(Str,[111],Str1),number_11(Str1,L1,Length,N).
+
+      %13
+number_13:-read_str(St,_),number_13(St,0,[],NSt),reverse(NSt,NStR),write_str(NStR).
+number_13([],_,St,St):-!.
+number_13([H|T],Counter,NSt,NStr):-Counter1 is Counter+1,0 is Counter1 mod 2,(H\=97,H\=98 -> append1([97],NSt,NSt1),number_13(T,Counter1,NSt1,NStr),!;
+                                                                             append1([99],NSt,NSt1),number_13(T,Counter1,NSt1,NStr)),!.
+number_13([H|T],Counter,NSt,NStr):-Counter1 is Counter+1,append1([H],NSt,NSt1),number_13(T,Counter1,NSt1,NStr).
