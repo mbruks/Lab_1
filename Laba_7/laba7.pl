@@ -25,5 +25,12 @@ wr_str:-read_str(A,Length),write_str(A),write(","),write_str(A),write(","),write
 kol_w:-read_str(A,_),append1([32],A,A1),kol_words(A1,0,Kol),write(Kol).
 kol_words([_|[]],Kol,Kol):-!.
 kol_words([H1|[H2|T]],K,Kol):-(H1=32,H2\=32 -> K1 is K+1,kol_words([H2|T],K1,Kol);kol_words([H2|T],K,Kol)).
+       %4
+prov:-read_str(A,Length),(Length>5 -> prov(A),reverse(A,AR),provL(AR);prov(A,Length)).
+prov([H1|[H2|[H3|_]]]):-put(H1),put(H2),put(H3),!.
+prov([_|_],0):-!.
+prov([H|T],Length):-put(H),L1 is Length-1,prov([H|T],L1).
+provL([H1|[H2|[H3|_]]]):-put(H3),put(H2),put(H1),!.
 
-
+length_list([],0):-!.
+length_list([_|T],L):-length_list(T,L1),L is L1+1.
