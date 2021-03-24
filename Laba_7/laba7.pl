@@ -55,3 +55,13 @@ kol_plus_minus([],KP,KP,KM,KM):-!.
 kol_plus_minus([43|T],KP,KolP,KM,KolM):-KP1 is KP+1,kol_plus_minus(T,KP1,KolP,KM,KolM).
 kol_plus_minus([45|T],KP,KolP,KM,KolM):-KM1 is KM+1,kol_plus_minus(T,KP,KolP,KM1,KolM).
 kol_plus_minus([_|T],KP,KolP,KM,KolM):-kol_plus_minus(T,KP,KolP,KM,KolM).
+       
+       %8
+list_el_num([H|T],El,Num):-list_el_num([H|T],El,Num,0).
+list_el_num([],119,0,_):-write("w Не существует"),nl,!.
+list_el_num([],120,0,_):-write("x Не существует"),nl,!.
+list_el_num([],_,0,_):-!.
+list_el_num([H|T],El,Num,Count):-Count1 is Count+1,(H = El,Num = Count1 -> !;list_el_num(T,El,Num,Count1)).
+
+number_8:-read_str(St,_),number_8(St).
+number_8(St):-list_el_num(St,119,N1),list_el_num(St,120,N2),N1\=N2,(N1<N2 -> (write("Раньше: "),put(119),nl;write("Раньше: "),put(120))).
