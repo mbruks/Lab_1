@@ -65,3 +65,8 @@ list_el_num([H|T],El,Num,Count):-Count1 is Count+1,(H = El,Num = Count1 -> !;lis
 
 number_8:-read_str(St,_),number_8(St).
 number_8(St):-list_el_num(St,119,N1),list_el_num(St,120,N2),N1\=N2,(N1<N2 -> (write("Раньше: "),put(119),nl;write("Раньше: "),put(120))).
+
+       %9
+number_9:-read_str(St1,N1),read_str(St2,N2),(N1>N2-> N is N1-N2,big_str(St1,N);N is N2-N1,big_str(St2,N)).
+big_str(_,0):-!.
+big_str(Str,Num):-name(St,Str),write(St),nl,Num1 is Num-1,big_str(Str,Num1).
