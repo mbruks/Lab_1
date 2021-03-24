@@ -95,3 +95,9 @@ number_14:-read_str(St,_),number_14(St,0,Kol),write(Kol).
 number_14([],K,K):-!.
 number_14([H|T],K,Kol):-H>47,H<58,K1 is K+1,number_14(T,K1,Kol),!.
 number_14([_|T],K,Kol):-number_14(T,K,Kol),!.
+
+      %15
+number_15:-read_str(Str,_),number_15(Str).
+number_15([]):-!.
+number_15([H|_]):-H\=97,H\=98,H\=99,!,fail.
+number_15([_|T]):-number_15(T).
