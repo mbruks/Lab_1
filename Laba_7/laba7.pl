@@ -125,3 +125,12 @@ number_19:-read_str(St,_),number_19(St,0,Kol),write(Kol).
 number_19([],K,K):-!.
 number_19([97,98,97|T],K,Kol):-K1 is K+1,number_19(T,K1,Kol),!.
 number_19([_|T],K,Kol):-number_19(T,K,Kol).
+
+     %20
+number_20:-read_str(St,_),number_20(St,0,[],NSt),number_20(NSt,StStart),reverse(StStart,StEnd),number_20(StEnd,Stroka),reverse(Stroka,StrokaR),write_str(StrokaR).
+number_20([],_,NL,NL):-!.
+number_20([32|T],0,Buffer,NL):-append1(Buffer,[32],BufferN),number_20(T,1,BufferN,NL),!.
+number_20([32|T],KolWS,Buffer,NL):-number_20(T,KolWS,Buffer,NL),!.
+number_20([H|T],_,Buffer,NL):-append1(Buffer,[H],BufferN),number_20(T,0,BufferN,NL),!.
+number_20([32|T],NSt):-number_20(T,NSt),!.
+number_20(Nst,Nst):-!.
