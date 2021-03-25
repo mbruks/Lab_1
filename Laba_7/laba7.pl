@@ -113,3 +113,9 @@ number_17:-read_str(St,_),number_17(St,[],NL),write_str(NL).
 number_17([],NL,NL):-!.
 number_17([120,97,98,99|T],Buffer,NL):-append1(Buffer,[97,98,99],BufferN),number_17(T,BufferN,NL),!.
 number_17([H|T],Buffer,NL):-append1(Buffer,[H],BufferN),number_17(T,BufferN,NL).
+
+      %18
+number_18:-read_str(St,_),number_18(St,[],NL),write_str(NL).
+number_18([],NL,NL):-!.
+number_18([97,98,99,H|T],Buffer,NL):-H>47,H<58,number_18([H|T],Buffer,NL),!.
+number_18([H|T],Buffer,NL):-append1(Buffer,[H],BufferN),number_18(T,BufferN,NL).
