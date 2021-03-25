@@ -101,3 +101,9 @@ number_15:-read_str(Str,_),number_15(Str).
 number_15([]):-!.
 number_15([H|_]):-H\=97,H\=98,H\=99,!,fail.
 number_15([_|T]):-number_15(T).
+
+      %16
+number_16:-read_str(Str,_),number_16(Str,[],NL),write_str(NL).
+number_16([],NL,NL):-!.
+number_16([119,111,114,100|T],Buffer,NL):-append(Buffer,[108,101,116,116,101,114],BufferN),number_16(T,BufferN,NL),!.
+number_16([H|T],Buffer,NL):-append1(Buffer,[H],BufferN),number_16(T,BufferN,NL),!.
