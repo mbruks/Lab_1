@@ -141,3 +141,12 @@ number_21([],_,[],LW,LW):-!.
 number_21([],_,LastWord,LW,ListWord):-append1(LW,[LastWord],ListWord),!.
 number_21([H|T],List2,BufferWord,LW,ListWord):-not(in_list(List2,H)),append1(BufferWord,[H],BufferWordN),number_21(T,List2,BufferWordN,LW,ListWord),!.
 number_21([_|T],List2,BufferWord,LW,ListWord):-append1(LW,[BufferWord],NLW),number_21(T,List2,[],NLW,ListWord).
+
+    %22
+number_22:-read_str(St,Length),number_22(St),number_22(St,Length).
+number_22([H|T]):-write("First = "),put(H),nl,reverse([H|T],[HR|_]),write("End = "),put(HR),nl.
+number_22(List,Length):-not(0 is Length mod 2),L is Length div 2+1,index(List,El,L,0),write("Middle = "),put(El),!.
+number_22(_,_):-true.
+
+index([H|T],El,Num):-index([H|T],El,Num,0).
+index([H|T],El,Num,Chet):-Chet1 is Chet+1,(H = El,Num = Chet1 -> !;index(T,El,Num,Chet1)).
