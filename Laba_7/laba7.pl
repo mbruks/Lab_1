@@ -134,3 +134,10 @@ number_20([32|T],KolWS,Buffer,NL):-number_20(T,KolWS,Buffer,NL),!.
 number_20([H|T],_,Buffer,NL):-append1(Buffer,[H],BufferN),number_20(T,0,BufferN,NL),!.
 number_20([32|T],NSt):-number_20(T,NSt),!.
 number_20(Nst,Nst):-!.
+
+     %21
+number_21:-read_str([H|T],_),read_str(St2,_),(in_list(St2,H) -> number_21(T,St2,[],[],LW);number_21([H|T],St2,[],[],LW)),write_list_str(LW).
+number_21([],_,[],LW,LW):-!.
+number_21([],_,LastWord,LW,ListWord):-append1(LW,[LastWord],ListWord),!.
+number_21([H|T],List2,BufferWord,LW,ListWord):-not(in_list(List2,H)),append1(BufferWord,[H],BufferWordN),number_21(T,List2,BufferWordN,LW,ListWord),!.
+number_21([_|T],List2,BufferWord,LW,ListWord):-append1(LW,[BufferWord],NLW),number_21(T,List2,[],NLW,ListWord).
