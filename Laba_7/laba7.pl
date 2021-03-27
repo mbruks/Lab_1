@@ -70,14 +70,12 @@ kol_plus_minus([45|T],KP,KolP,KM,KolM):-KM1 is KM+1,kol_plus_minus(T,KP,KolP,KM1
 kol_plus_minus([_|T],KP,KolP,KM,KolM):-kol_plus_minus(T,KP,KolP,KM,KolM).
        
        %8
-list_el_num([H|T],El,Num):-list_el_num([H|T],El,Num,0).
-list_el_num([],119,0,_):-write("w Не существует"),nl,!.
-list_el_num([],120,0,_):-write("x Не существует"),nl,!.
-list_el_num([],_,0,_):-!.
-list_el_num([H|T],El,Num,Count):-Count1 is Count+1,(H = El,Num = Count1 -> !;list_el_num(T,El,Num,Count1)).
+number_8:-read_str(A,_),prov_w(A,0,Indw),prov_x(A,0,Indx),(Indw<Indx->write("w встречается раньше");write("x встречается раньше")).
+prov_w([],_,_):-write("Не существует w"),!,fail.
+prov_w([Head|Tail],I,Ind):-(Head =:=119 -> Ind is I;I1 is I+1,prov_w(Tail,I1,Ind)).
 
-number_8:-read_str(St,_),number_8(St).
-number_8(St):-list_el_num(St,119,N1),list_el_num(St,120,N2),N1\=N2,(N1<N2 -> (write("Раньше: "),put(119),nl;write("Раньше: "),put(120))).
+prov_x([],_,_):-write("Не существует x"),!,fail.
+prov_x([Head|Tail],I,Ind):-(Head =:=120 -> Ind is I;I1 is I+1,prov_x(Tail,I1,Ind)).
 
        %9
 number_9:-read_str(St1,N1),read_str(St2,N2),(N1>N2-> N is N1-N2,big_str(St1,N);N is N2-N1,big_str(St2,N)).
