@@ -33,6 +33,13 @@ number_1:-see('D:/Prolog/input.txt'),read_list_str(List),seen,
 number_1([],K,K):-!.
 number_1([H|T],K,Kol):-length_word(H,L),(L>K -> K1 is L,number_1(T,K1,Kol);number_1(T,K,Kol)).
 
+      %2
+number_2:-see('D:/Prolog/input.txt'),read_list_str(List),seen,
+	  tell('D:/Prolog/output.txt'),number_2(List,0,Kol),write(Kol),told.
+
+number_2([],K,K):-!.
+number_2([H|T],K,Kol):-not(in_list(H,32)),K1 is K+1,number_2(T,K1,Kol),!.
+number_2([_|T],K,Kol):-number_2(T,K,Kol),!.
 
 
 
