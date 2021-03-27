@@ -41,6 +41,25 @@ number_2([],K,K):-!.
 number_2([H|T],K,Kol):-not(in_list(H,32)),K1 is K+1,number_2(T,K1,Kol),!.
 number_2([_|T],K,Kol):-number_2(T,K,Kol),!.
 
+      %3
+number_3:-see('D:/Prolog/input.txt'),read_list_str(List),seen,tell('D:/Prolog/output.txt'),
+       count_A(List,[],List_Kolvo),average(List_Kolvo,Ave),big_a(List,Ave).
+
+count_A([],List_Kolvo_A,List_Kolvo_A):-!.
+count_A([Head|Tail],I,List_Kolvo):-count_A_in_str(Head,0,Kolvo_A),append1(I,[Kolvo_A],I1),count_A(Tail,I1,List_Kolvo).
+
+count_A_in_str([],Kolvo_A,Kolvo_A):-!.
+count_A_in_str([Head|Tail],I,Kolvo_A):-(Head is 65->I1 is I+1,count_A_in_str(Tail,I1,Kolvo_A);count_A_in_str(Tail,I,Kolvo_A)).
+
+
+average(List_Kolvo,Ave):-average(List_Kolvo,0,Sum,0,Num),Ave is Sum / Num.
+
+average([],I_Sum,I_Sum,I_Num,I_Num):-!.
+average([Head|Tail],I_Sum,Sum,I_Num,Num):-I1_Sum is I_Sum+Head,I1_Num is I_Num+1,average(Tail,I1_Sum,Sum,I1_Num,Num).
+
+big_a([],_):-!.
+big_a([Head|Tail],Ave):-count_A_in_str(Head,0,Kolvo_a),(Kolvo_a>Ave->name(Head1,Head),write(Head1),nl,big_a(Tail,Ave);big_a(Tail,Ave)).
+
 
 
 
