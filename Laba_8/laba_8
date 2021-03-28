@@ -176,6 +176,16 @@ all_latin([]):-!.
 all_latin([Head|_]):-Head >=97,Head =<122,put(Head),fail.
 all_latin([_|Tail]):-all_latin(Tail).
 
+    %4_10
+number_4_10:-see('D:/Prolog/input.txt'),read_str(A,_,1),seen,
+	tell('D:/Prolog/output.txt'),all_latin(A,[],Latin),not_repeat(Latin,Unique),lenght(Unique,N),write(N),told.
+
+all_latin([],Latin,Latin):-!.
+all_latin([Head|Tail],I,Latin):-(Head >=97,Head =<122->append(I,[Head],I1),all_latin(Tail,I1,Latin);all_latin(Tail,I,Latin)).
+
+lenght([],L,L):-!.
+lenght([_|Tail],I,L):-I1 is I+1,lenght(Tail,I1,L).
+lenght(List,L):-lenght(List,1,L).
 
 
 
