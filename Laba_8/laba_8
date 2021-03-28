@@ -187,6 +187,8 @@ lenght([],L,L):-!.
 lenght([_|Tail],I,L):-I1 is I+1,lenght(Tail,I1,L).
 lenght(List,L):-lenght(List,1,L).
 
-
+    %4_17
+number_4_17:-see('D:/Prolog/input.txt'),read_str(A,_,1),seen,
+	tell('D:/Prolog/output.txt'),reverse(A,Ar),to_dot(Ar,Ar_to_dot),before_slash(Ar_to_dot,[],Res),name(Res1,Res),write(Res1),told.
 
 
