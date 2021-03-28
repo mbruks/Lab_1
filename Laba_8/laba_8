@@ -96,6 +96,15 @@ number_2_10([],K,K):-!.
 number_2_10([H|T],K,Kol):-H=65,K1 is K+1,number_2_10(T,K1,Kol),!.
 number_2_10([_|T],K,Kol):-number_2_10(T,K,Kol).
 
+      %2_17
+number_2_17:-see('D:/Prolog/input.txt'),read_str(A,_,1),seen,
+	tell('D:/Prolog/output.txt'),reverse(A,Ar),to_dot(Ar,Ar_to_dot),before_slash(Ar_to_dot,[],Res),name(Res1,Res),write(Res1),told.
+
+to_dot([46|Tail],Res):-append([],Tail,Res),!.
+to_dot([_|Tail],Res):-to_dot(Tail,Res).
+
+before_slash([47|_],Res,Res):-!.
+before_slash([Head|Tail],I,Res):-append([Head],I,I1),before_slash(Tail,I1,Res).
 
 
 
