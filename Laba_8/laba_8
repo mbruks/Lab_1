@@ -88,7 +88,13 @@ number_2_2([Head|Tail]):-(Head>=97,Head=<122->number_2_2(Tail,Head);number_2_2(T
 number_2_2([],_):-!.
 number_2_2([Head|Tail],Num_Pred_Head):-(Head>=97,Head=<122->(Num_Pred_Head=<Head->number_2_2(Tail,Head);!,fail);number_2_2(Tail,Num_Pred_Head)).
 
+      %2_10
+number_2_10:-see('D:/Prolog/input.txt'),read_str(A,_,1),seen,
+	tell('D:/Prolog/output.txt'),number_2_10(A,0,K),write(K),told.
 
+number_2_10([],K,K):-!.
+number_2_10([H|T],K,Kol):-H=65,K1 is K+1,number_2_10(T,K1,Kol),!.
+number_2_10([_|T],K,Kol):-number_2_10(T,K,Kol).
 
 
 
