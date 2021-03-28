@@ -80,6 +80,47 @@ number_4([],Word,Word,Kol,Kol):-!.
 number_4([H|T],W,Word,K,Kol):-kol_repeat_in_list([H|T],H,K1),(K1>K -> Kol1 = K1,W1=H,
 					    number_4(T,W1,Word,K1,Kol1);number_4(T,W,Word,K,Kol)).
 
+       %1_5
+number_1_5:-see('D:/Prolog/input.txt'),read_list_str(List),seen,words_in_all_str(List,[],All_words),not_repeat(All_words,Unique_words),
+	  tell('D:/Prolog/output.txt'),noincidence(List,Unique_words),told.
+
+words_in_all_str([],List_frequent,List_frequent):-!.
+words_in_all_str([Head|Tail],I,List_frequent):-get_words(Head,Words),append(I,Words,I1),words_in_all_str(Tail,I1,List_frequent).
+
+get_words(A,Words):-get_words(A,[],Words).
+
+get_words([],List_words,List_words):-!.
+get_words(Str,Words,List_words):-skip_space(Str,New_Str),get_word(New_Str,Word,New_Str_after_word),
+    Word \=[],append(Words,[Word],New_list_word),get_words(New_Str_after_word,New_list_word,List_words),!.
+get_words(_,List_words,List_words).
+
+skip_space([32|Tail],New_Str):-skip_space(Tail,New_Str),!.
+skip_space(New_Str,New_Str).
+
+get_word([],[],[]):-!.
+get_word(Str,Word,New_Str_after_word):-get_word(Str,[],Word,New_Str_after_word).
+
+get_word([],Word,Word,[]).
+get_word([32|T],Word,Word,T):-!.
+get_word([H|T],W,Word,New_Str_after_word):-append(W,[H],W1),get_word(T,W1,Word,New_Str_after_word).
+
+noincidence([],_):-!.
+noincidence([Head|Tail],Unique_words):-(get_words(Head,Words_Head),coin_str(Words_Head,Unique_words)->write_str(Head),nl,noincidence(Tail,Unique_words);noincidence(Tail,Unique_words)).
+
+coin_str([],_):-!.
+coin_str([Head|Tail],Unique_words):-m_list(Unique_words,Head),coin_str(Tail,Unique_words).
+
+m_list([El|_],El):-!.
+m_list([_|T],El):-m_list(T,El).
+
+del(_,[],[]):-!.
+del(Head,[Head|Tail],Res) :- del(Head,Tail,Res),!.
+del(Head,[Head1|Tail],[Head1|Res]) :- not(Head = Head1),del(Head,Tail,Res).
+
+not_repeat([],[]):-!.
+not_repeat([Head|Tail],[Head|Res]) :- not(m_list(Tail,Head)), not_repeat(Tail,Res),!.
+not_repeat([Head|Tail],Res) :- del(Head,Tail,Head1), not_repeat(Head1,Res).
+
       %2_2
 number_2_2:-see('D:/Prolog/input.txt'),read_str(A,_,1),seen,
 	tell('D:/Prolog/output.txt'),number_2_2(A),write(A),told.
