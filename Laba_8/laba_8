@@ -168,6 +168,13 @@ year([32|Tail],Year,Year,Tail):-!.
 year([Head|Tail],I,Year,After_Year):-Head >=48,Head =<57,append(I,[Head],I1),year(Tail,I1,Year,After_Year),!.
 year([_|_],_,_,_):-!,false.
 
+    %4_2
+number_4_2:-see('D:/Prolog/input.txt'),read_str(A,_,1),seen,
+	tell('D:/Prolog/output.txt'),all_latin(A),told.
+
+all_latin([]):-!.
+all_latin([Head|_]):-Head >=97,Head =<122,put(Head),fail.
+all_latin([_|Tail]):-all_latin(Tail).
 
 
 
