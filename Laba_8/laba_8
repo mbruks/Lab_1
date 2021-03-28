@@ -80,7 +80,13 @@ number_4([],Word,Word,Kol,Kol):-!.
 number_4([H|T],W,Word,K,Kol):-kol_repeat_in_list([H|T],H,K1),(K1>K -> Kol1 = K1,W1=H,
 					    number_4(T,W1,Word,K1,Kol1);number_4(T,W,Word,K,Kol)).
 
+      %2_2
+number_2_2:-see('D:/Prolog/input.txt'),read_str(A,_,1),seen,
+	tell('D:/Prolog/output.txt'),number_2_2(A),write(A),told.
 
+number_2_2([Head|Tail]):-(Head>=97,Head=<122->number_2_2(Tail,Head);number_2_2(Tail)).
+number_2_2([],_):-!.
+number_2_2([Head|Tail],Num_Pred_Head):-(Head>=97,Head=<122->(Num_Pred_Head=<Head->number_2_2(Tail,Head);!,fail);number_2_2(Tail,Num_Pred_Head)).
 
 
 
