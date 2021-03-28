@@ -221,3 +221,16 @@ number_6:-see('D:/Prolog/input.txt'),read_list_str(A),seen,
 
 list_word([],Res,Res):-!.
 list_word([Head|Tail],I,Res):-get_words(Head,Words),lenght(Words,Count_Words),append(I,[Count_Words],I1),list_word(Tail,I1,Res).
+
+    %7
+number_7:-see('D:/Prolog/input.txt'),read_list_str(A), seen,
+	tell('D:/Prolog/output.txt'),list_word_after_digit(A,[],List_Word),bubble_sort(List_Word,_,A,Sorted_A),write_sort(Sorted_A),told.
+
+list_word_after_digit([],Res,Res):-!.
+list_word_after_digit([Head|Tail],I,Res):-get_words(Head,Words),count_words_after_digit(Words,0,Count_Words),append(I,[Count_Words],I1),list_word_after_digit(Tail,I1,Res).
+
+count_words_after_digit([_],Count_Words,Count_Words):-!.
+count_words_after_digit([Head|Tail],I,Count_Words):-kolvo_digit(Head,0,Kolvo_Digit),(Kolvo_Digit>0->I1 is I+1,count_words_after_digit(Tail,I1,Count_Words);count_words_after_digit(Tail,I,Count_Words)).
+
+kolvo_digit([],Kolvo,Kolvo):-!.
+kolvo_digit([Head|Tail],I,Kolvo):-Head>=48,Head=<57->I1 is I+1,kolvo_digit(Tail,I1,Kolvo);kolvo_digit(Tail,I,Kolvo).
