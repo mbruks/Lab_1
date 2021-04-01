@@ -165,3 +165,15 @@ min_v_not_pryf(Code,[Head|Tail],V):-(not(in_list1(Code,Head))->V is Head,!;min_v
 
 code_pryf([],Ver_list,Ver_list,E,E):-!.
 code_pryf([Head_C|Tail_C],Ver_list,I_Ver_list,I_E,E):-min_v_not_pryf([Head_C|Tail_C],I_Ver_list,V),append(I_E,[[Head_C,V]],I1_E),delete(I_Ver_list,V,I1_Ver_list),code_pryf(Tail_C,Ver_list,I1_Ver_list,I1_E,E).
+
+  %3.
+number_3:-see('D:/Prolog/one.txt'),read_graph(_,E1),seen,euler_N(E1).
+
+b_a_r([],[]):-!.
+b_a_r(A,[El|Perm]):-in_list_exlude1(A,El,A1),b_a_r(A1,Perm).
+
+euler_N(E):-b_a_r(E,Way),length(E,L),path(L,Way),write(Way),!.
+path(L,T):-path1(L1,T),L1==L.
+path1(1,[_]):-!.
+path1(K,[[_,X]|[[X,Y]|T]]):-path1(K1,[[X,Y]|T]),K is K1+1.
+path1(K,[[_,X]|[[Y,X]|T]]):-path1(K1,[[X,Y]|T]),K is K1+1.
