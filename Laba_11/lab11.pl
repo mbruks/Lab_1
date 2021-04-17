@@ -29,7 +29,6 @@ negative_r(X,Y):-repeat,(negative(X,Y) -> (nl,write(X),nl,write(Y),write("."),re
 
 
 
-
 prTell:-tell('C:/Users/Admin/Desktop/Files/1.txt'),human_r(X1,_),X1=nil,told,
      tell('C:/Users/Admin/Desktop/Files/2.txt'),female_r(X2,_),X2=nil,told,
      tell('C:/Users/Admin/Desktop/Files/3.txt'),hero_r(X3,_),X3=nil,told,
